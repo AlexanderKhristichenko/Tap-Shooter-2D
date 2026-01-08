@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,6 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Transform spawnPoint;
     [SerializeField] float spawnRate;
     [SerializeField] float maxPos;
+    [SerializeField] TextMeshProUGUI scoreText;
 
     void Awake()
     {
@@ -38,6 +40,7 @@ public class GameManager : MonoBehaviour
     public void GameScore()
     {
         score++;
+        scoreText.text = score.ToString();
         print(score);
     }
 
