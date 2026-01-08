@@ -7,14 +7,32 @@ public class GameManager : MonoBehaviour
 
     int score = 0;
 
+    [SerializeField] GameObject target;
+    [SerializeField] Transform spawnPoint;
+    [SerializeField] float spawnRate;
+    [SerializeField] float maxPos;
+
     void Awake()
     {
         instance = this;
     }
 
+    void Start()
+    {
+        GameStart();
+    }
+
     public void GameStart()
     {
+        InvokeRepeating("SpawnTarget", 1f, spawnRate);
+    }
 
+    void SpawnTarget()
+    {
+        Vector3 spawnPos = spawnPoint.position;
+        spawnPos.x = Random.Range(-maxPos, maxPos);
+
+        Instantiate(target, spawnPos, Quaternion.identity);
     }
 
     public void GameScore()
