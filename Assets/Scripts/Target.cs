@@ -11,12 +11,14 @@ public class Target : MonoBehaviour
     {
         if (transform.position.y <= -7f)
         {
-            Debug.Log("Game Over!");
+            GameManager.instance.GameOver();
         }
     }
 
     void OnMouseDown()
     {
+        GameManager.instance.GameScore();
+
         Destroy(gameObject);
     }
 }
